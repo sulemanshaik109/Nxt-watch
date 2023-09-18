@@ -11,7 +11,9 @@ import {
   ChannelName,
   ChannelViewCount,
   PublishedDate,
+  CircleDot1,
   CircleDot,
+  ViewsAndDateContainer,
 } from '../../styledComponents'
 
 const ProductCard = props => {
@@ -29,12 +31,14 @@ const ProductCard = props => {
             <VideoTitle>{title}</VideoTitle>
             <DetailsList>
               <ChannelName>{name}</ChannelName>
-              <CircleDot />
-              <ChannelViewCount>{viewCount} views</ChannelViewCount>
-              <CircleDot />
-              <PublishedDate>
-                {formatDistanceToNow(new Date(publishedAt))}
-              </PublishedDate>
+              <CircleDot1 />
+              <ViewsAndDateContainer>
+                <ChannelViewCount>{viewCount} views</ChannelViewCount>
+                <CircleDot />
+                <PublishedDate>
+                  {formatDistanceToNow(new Date(publishedAt))}
+                </PublishedDate>
+              </ViewsAndDateContainer>
             </DetailsList>
           </VideoContent>
         </VideoDetailsContainer>

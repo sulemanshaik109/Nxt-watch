@@ -18,6 +18,7 @@ import {
   NoVideosDescription,
   RetryBtn,
   ProductsLoaderContainer,
+  HomeBodyContainer,
 } from '../../styledComponents'
 
 const apiStatusConstants = {
@@ -33,6 +34,7 @@ class Home extends Component {
     searchInput: '',
     showBanner: true,
     apiStatus: apiStatusConstants.initial,
+    showMenu: false,
   }
 
   componentDidMount() {
@@ -92,6 +94,10 @@ class Home extends Component {
 
   onClickRetry = () => {
     this.getAllVideos()
+  }
+
+  clickMenu = () => {
+    this.setState(prevState => ({showMenu: !prevState.showMenu}))
   }
 
   renderSearchInput = () => {
@@ -179,14 +185,18 @@ class Home extends Component {
   }
 
   render() {
-    const {showBanner} = this.state
+    const {showBanner, showMenu} = this.state
     return (
       <>
-        <Header />
+        <Header clickMenu={this.clickMenu} showMenu={showMenu} />
         <HomeContainer data-testid="home">
-          {showBanner ? <BannerSection closeBanner={this.closeBanner} /> : null}
-          {this.renderSearchInput()}
-          {this.renderAllVideos()}
+          <HomeBodyContainer>
+            {showBanner ? (
+              <BannerSection closeBanner={this.closeBanner} />
+            ) : null}
+            {this.renderSearchInput()}
+            {this.renderAllVideos()}
+          </HomeBodyContainer>
         </HomeContainer>
       </>
     )

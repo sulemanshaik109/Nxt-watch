@@ -8,14 +8,26 @@ import {
   StyledLogOut,
   OptionsContainer,
   Menu,
+  MenuItemsContainer,
+  MenuItemLink,
+  HomeIcon,
+  TrendingIcon,
+  GamingIcon,
+  SavedIcon,
+  MenuItem,
 } from '../../styledComponents'
 
 const Header = props => {
+  const {clickMenu, showMenu} = props
   const onClickLogout = () => {
     const {history} = props
 
     Cookies.remove('jwt_token')
     history.replace('/login')
+  }
+
+  const onClickMenuIcon = () => {
+    clickMenu()
   }
 
   return (
@@ -31,7 +43,7 @@ const Header = props => {
           <CustomButton type="button" data-testid="theme">
             <MoonTheme />
           </CustomButton>
-          <CustomButton type="button">
+          <CustomButton type="button" onClick={onClickMenuIcon}>
             <Menu />
           </CustomButton>
           <CustomButton type="button" onClick={onClickLogout}>
@@ -39,6 +51,26 @@ const Header = props => {
           </CustomButton>
         </OptionsContainer>
       </NavHeader>
+      {showMenu ? (
+        <MenuItemsContainer>
+          <MenuItemLink to="/">
+            <HomeIcon />
+            <MenuItem>Home</MenuItem>
+          </MenuItemLink>
+          <MenuItemLink to="/trending">
+            <TrendingIcon />
+            <MenuItem>Trending</MenuItem>
+          </MenuItemLink>
+          <MenuItemLink to="/gaming">
+            <GamingIcon />
+            <MenuItem>Gaming</MenuItem>
+          </MenuItemLink>
+          <MenuItemLink to="/">
+            <SavedIcon />
+            <MenuItem>Saved Videos</MenuItem>
+          </MenuItemLink>
+        </MenuItemsContainer>
+      ) : null}
     </>
   )
 }

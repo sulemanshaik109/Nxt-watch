@@ -4,8 +4,11 @@ import {FiLogOut} from 'react-icons/fi'
 import {FaMoon} from 'react-icons/fa'
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {GrFormClose} from 'react-icons/gr'
-import {AiOutlineSearch} from 'react-icons/ai'
+import {AiOutlineSearch, AiFillHome} from 'react-icons/ai'
 import {BsCircleFill} from 'react-icons/bs'
+import {HiFire} from 'react-icons/hi'
+import {SiYoutubegaming} from 'react-icons/si'
+import {BiListPlus} from 'react-icons/bi'
 
 export const LoginFormContainer = styled.div`
   background-color: #f9f9f9;
@@ -138,8 +141,10 @@ export const Menu = styled(GiHamburgerMenu)`
 `
 export const HomeContainer = styled.div`
   display: flex;
+`
+export const HomeBodyContainer = styled.div`
+  display: flex;
   flex-direction: column;
-  align-items: center;
 `
 export const BannerContainer = styled.div`
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
@@ -148,6 +153,7 @@ export const BannerContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  width: 100%;
 `
 export const BannerContent = styled.div`
   display: flex;
@@ -214,15 +220,20 @@ export const SearchButton = styled.button`
   align-items: center;
 `
 export const AllVideosContainer = styled.div`
+  background-color: #f4f4f4;
   display: flex;
   flex-direction: column;
 `
 export const VideosList = styled.ul`
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   padding-left: 0;
   width: 100%;
   margin-top: 0px;
+  @media screen and (min-width: 576px) {
+    padding: 20px;
+  }
 `
 export const VideoItem = styled.li`
   list-style-type: none;
@@ -230,6 +241,9 @@ export const VideoItem = styled.li`
   width: 100%;
   flex-grow: 0;
   flex-shrink: 1;
+  @media screen and (min-width: 576px) {
+    width: 48%;
+  }
 `
 export const LinkItem = styled(Link)`
   display: flex;
@@ -240,13 +254,14 @@ export const ThumbnailImage = styled.img`
   width: 100%;
 `
 export const NoVideosView = styled.div`
-  background-color: #f9f9f9;
+  background-color: #f4f4f4;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-bottom: 64px;
-  margin-top: 48px;
+  width: 100%;
+  padding-top: 48px;
 `
 export const CustomImage = styled.img`
   width: 170px;
@@ -308,19 +323,43 @@ export const DetailsList = styled.ul`
   display: flex;
   align-items: center;
   padding-left: 0px;
+  list-style-type: none;
+  margin-top: 10px;
+  @media screen and (min-width: 576px) {
+    flex-direction: column;
+    margin-top: 0px;
+  }
 `
-export const ChannelName = styled.p`
+export const ChannelName = styled.li`
   color: #94a3b8;
   font-family: 'Roboto';
   font-size: 13px;
   font-weight: 500;
-  list-style-type: none;
+  @media screen and (min-width: 576px) {
+    align-self: flex-start;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 16px;
+  }
 `
 export const ChannelViewCount = styled(ChannelName)`
-  list-style-type: circle;
+  @media screen and (min-width: 576px) {
+    font-size: 13px;
+  }
 `
 export const PublishedDate = styled(ChannelName)`
-  list-style-type: circle;
+  @media screen and (min-width: 576px) {
+    font-size: 13px;
+  }
+`
+export const CircleDot1 = styled(BsCircleFill)`
+  font-size: 4px;
+  color: #94a3b8;
+  margin-left: 6px;
+  margin-right: 6px;
+  @media screen and (min-width: 576px) {
+    display: none;
+  }
 `
 export const CircleDot = styled(BsCircleFill)`
   font-size: 4px;
@@ -333,4 +372,55 @@ export const ProductsLoaderContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 50vh;
+`
+export const ViewsAndDateContainer = styled.div`
+  display: flex;
+  align-items: center;
+  @media screen and (min-width: 576px) {
+    align-self: flex-start;
+  }
+`
+export const MenuItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+`
+export const MenuItemLink = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+`
+export const HomeIcon = styled(AiFillHome)`
+  font-size: 16px;
+  margin-right: 20px;
+  text-decoration: none;
+  color: #475569;
+`
+export const TrendingIcon = styled(HiFire)`
+  font-size: 16px;
+  margin-right: 20px;
+  text-decoration: none;
+  color: #475569;
+`
+export const GamingIcon = styled(SiYoutubegaming)`
+  font-size: 16px;
+  margin-right: 20px;
+  text-decoration: none;
+  color: #475569;
+`
+export const SavedIcon = styled(BiListPlus)`
+  font-size: 16px;
+  margin-right: 20px;
+  text-decoration: none;
+  color: #475569;
+`
+export const MenuItem = styled.p`
+  color: #475569;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 10px;
 `
