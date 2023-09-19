@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import Popup from 'reactjs-popup'
 import {FiLogOut} from 'react-icons/fi'
 import {FaMoon} from 'react-icons/fa'
 import {GiHamburgerMenu} from 'react-icons/gi'
@@ -116,6 +117,7 @@ export const NavHeader = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  position: top;
 `
 export const WebsiteLogoHeader = styled.img`
   width: 90px;
@@ -132,9 +134,13 @@ export const StyledLogOut = styled(FiLogOut)`
 export const OptionsContainer = styled.div`
   display: flex;
   align-items: center;
+  @media screen and (min-width: 767px) {
+    display: none;
+  }
 `
 export const MoonTheme = styled(FaMoon)`
   font-size: 22px;
+  margin-top: 5px;
 `
 export const Menu = styled(GiHamburgerMenu)`
   font-size: 22px;
@@ -145,6 +151,11 @@ export const HomeContainer = styled.div`
 export const HomeBodyContainer = styled.div`
   display: flex;
   flex-direction: column;
+  @media screen and (min-width: 767px) {
+    width: 80%;
+    height: 100vh;
+    overflow: auto;
+  }
 `
 export const BannerContainer = styled.div`
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
@@ -198,6 +209,9 @@ export const SearchInputContainer = styled.div`
   align-items: center;
   width: 100%;
   padding: 20px;
+  @media screen and (min-width: 767px) {
+    width: 55%;
+  }
 `
 export const SearchInput = styled.input`
   background-color: #ffffff;
@@ -209,6 +223,9 @@ export const SearchInput = styled.input`
   height: 30px;
   padding-left: 10px;
   flex-grow: 1;
+  @media screen and (min-width: 767px) {
+    height: 36px;
+  }
 `
 export const SearchButton = styled.button`
   background-color: #ebebeb;
@@ -218,6 +235,9 @@ export const SearchButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: 767px) {
+    height: 36px;
+  }
 `
 export const AllVideosContainer = styled.div`
   background-color: #f4f4f4;
@@ -243,6 +263,9 @@ export const VideoItem = styled.li`
   flex-shrink: 1;
   @media screen and (min-width: 576px) {
     width: 48%;
+  }
+  @media screen and (min-width: 767px) {
+    width: 30%;
   }
 `
 export const LinkItem = styled(Link)`
@@ -319,18 +342,16 @@ export const VideoTitle = styled.p`
   margin-top: 10px;
   margin-bottom: 0px;
 `
-export const DetailsList = styled.ul`
+export const DetailsList = styled.div`
   display: flex;
   align-items: center;
-  padding-left: 0px;
-  list-style-type: none;
   margin-top: 10px;
   @media screen and (min-width: 576px) {
     flex-direction: column;
     margin-top: 0px;
   }
 `
-export const ChannelName = styled.li`
+export const ChannelName = styled.p`
   color: #94a3b8;
   font-family: 'Roboto';
   font-size: 13px;
@@ -380,12 +401,13 @@ export const ViewsAndDateContainer = styled.div`
     align-self: flex-start;
   }
 `
-export const MenuItemsContainer = styled.div`
+export const MenuItemsContainer = styled.ul`
   display: flex;
   flex-direction: column;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
+  list-style-type: none;
 `
 export const MenuItemLink = styled(Link)`
   text-decoration: none;
@@ -423,4 +445,103 @@ export const MenuItem = styled.p`
   font-weight: 500;
   margin-bottom: 10px;
   margin-top: 10px;
+`
+export const DesktopOptionsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`
+export const ProfileImg = styled.img`
+  width: 28px;
+  margin-left: 5px;
+  margin-right: 5px;
+`
+export const LogoutBtn = styled.button`
+  background-color: transparent;
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px 15px 5px 15px;
+  margin-left: 10px;
+`
+export const SideBarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20%;
+  height: 100vh;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`
+export const ContactUsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+`
+export const ContactUsText = styled.p`
+  color: #475569;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+`
+export const SocialMediaAppsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`
+export const SocialMediaAppImg = styled.img`
+  width: 30px;
+  margin-right: 12px;
+`
+export const ContactUsDescription = styled.p`
+  color: #475569;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: bold;
+`
+export const StyledPopup = styled(Popup)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #909090;
+`
+export const ModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  width: 100%;
+  padding: 30px;
+  border-radius: 10px;
+`
+export const ModalDescription = styled.p`
+  color: #64748b;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+`
+export const ModalButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+export const ModalButton = styled.button`
+  background-color: ${props => (props.outline ? 'transparent' : '#4f46e5')};
+  border: ${props => (props.outline ? '1px solid #94a3b8' : 'none')};
+  border-radius: 3px;
+  color: ${props => (props.outline ? '#94a3b8' : '#ffffff')};
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
 `

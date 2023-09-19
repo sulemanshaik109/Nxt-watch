@@ -19,6 +19,19 @@ import {
   RetryBtn,
   ProductsLoaderContainer,
   HomeBodyContainer,
+  SideBarContainer,
+  MenuItemsContainer,
+  MenuItemLink,
+  HomeIcon,
+  MenuItem,
+  TrendingIcon,
+  GamingIcon,
+  SavedIcon,
+  ContactUsContainer,
+  ContactUsText,
+  SocialMediaAppsContainer,
+  SocialMediaAppImg,
+  ContactUsDescription,
 } from '../../styledComponents'
 
 const apiStatusConstants = {
@@ -68,7 +81,6 @@ class Home extends Component {
         title: video.title,
         viewCount: video.view_count,
       }))
-      console.log(updatedData)
       this.setState({
         videosList: updatedData,
         apiStatus: apiStatusConstants.success,
@@ -111,7 +123,11 @@ class Home extends Component {
           onChange={this.onChangeSearchInput}
           placeholder="Search"
         />
-        <SearchButton type="button" onClick={this.onClickSearchIcon}>
+        <SearchButton
+          type="button"
+          onClick={this.onClickSearchIcon}
+          data-testid="searchButton"
+        >
           <SearchIcon />
         </SearchButton>
       </SearchInputContainer>
@@ -119,7 +135,7 @@ class Home extends Component {
   }
 
   renderLoadingView = () => (
-    <ProductsLoaderContainer>
+    <ProductsLoaderContainer data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </ProductsLoaderContainer>
   )
@@ -169,6 +185,49 @@ class Home extends Component {
     )
   }
 
+  renderSideBar = () => (
+    <SideBarContainer>
+      <MenuItemsContainer>
+        <MenuItemLink to="/">
+          <HomeIcon />
+          <MenuItem>Home</MenuItem>
+        </MenuItemLink>
+        <MenuItemLink to="/trending">
+          <TrendingIcon />
+          <MenuItem>Trending</MenuItem>
+        </MenuItemLink>
+        <MenuItemLink to="/gaming">
+          <GamingIcon />
+          <MenuItem>Gaming</MenuItem>
+        </MenuItemLink>
+        <MenuItemLink to="/">
+          <SavedIcon />
+          <MenuItem>Saved Videos</MenuItem>
+        </MenuItemLink>
+      </MenuItemsContainer>
+      <ContactUsContainer>
+        <ContactUsText>CONTACT US</ContactUsText>
+        <SocialMediaAppsContainer>
+          <SocialMediaAppImg
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
+            alt="facebook logo"
+          />
+          <SocialMediaAppImg
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
+            alt="twitter logo"
+          />
+          <SocialMediaAppImg
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
+            alt="linked in logo"
+          />
+        </SocialMediaAppsContainer>
+        <ContactUsDescription>
+          Enjoy! Now to see your channels and recommendations!
+        </ContactUsDescription>
+      </ContactUsContainer>
+    </SideBarContainer>
+  )
+
   renderAllVideos = () => {
     const {apiStatus} = this.state
 
@@ -190,6 +249,7 @@ class Home extends Component {
       <>
         <Header clickMenu={this.clickMenu} showMenu={showMenu} />
         <HomeContainer data-testid="home">
+          {this.renderSideBar()}
           <HomeBodyContainer>
             {showBanner ? (
               <BannerSection closeBanner={this.closeBanner} />

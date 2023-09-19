@@ -15,6 +15,14 @@ import {
   GamingIcon,
   SavedIcon,
   MenuItem,
+  DesktopOptionsContainer,
+  ProfileImg,
+  LogoutBtn,
+  StyledPopup,
+  ModalContainer,
+  ModalDescription,
+  ModalButtonsContainer,
+  ModalButton,
 } from '../../styledComponents'
 
 const Header = props => {
@@ -46,10 +54,64 @@ const Header = props => {
           <CustomButton type="button" onClick={onClickMenuIcon}>
             <Menu />
           </CustomButton>
-          <CustomButton type="button" onClick={onClickLogout}>
-            <StyledLogOut />
-          </CustomButton>
+          <StyledPopup
+            modal
+            trigger={
+              <CustomButton type="button">
+                <StyledLogOut />
+              </CustomButton>
+            }
+          >
+            {close => (
+              <>
+                <ModalContainer>
+                  <ModalDescription>
+                    Are you sure you want to logout?
+                  </ModalDescription>
+                  <ModalButtonsContainer>
+                    <ModalButton type="button" onClick={() => close()} outline>
+                      Cancel
+                    </ModalButton>
+                    <ModalButton type="button" onClick={onClickLogout}>
+                      Confirm
+                    </ModalButton>
+                  </ModalButtonsContainer>
+                </ModalContainer>
+              </>
+            )}
+          </StyledPopup>
         </OptionsContainer>
+        <DesktopOptionsContainer>
+          <CustomButton type="button" data-testid="theme">
+            <MoonTheme />
+          </CustomButton>
+          <ProfileImg
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
+            alt="profile"
+          />
+          <StyledPopup
+            modal
+            trigger={<LogoutBtn type="button">Logout</LogoutBtn>}
+          >
+            {close => (
+              <>
+                <ModalContainer>
+                  <ModalDescription>
+                    Are you sure you want to logout?
+                  </ModalDescription>
+                  <ModalButtonsContainer>
+                    <ModalButton type="button" onClick={() => close()} outline>
+                      Cancel
+                    </ModalButton>
+                    <ModalButton type="button" onClick={onClickLogout}>
+                      Confirm
+                    </ModalButton>
+                  </ModalButtonsContainer>
+                </ModalContainer>
+              </>
+            )}
+          </StyledPopup>
+        </DesktopOptionsContainer>
       </NavHeader>
       {showMenu ? (
         <MenuItemsContainer>
